@@ -3,6 +3,9 @@ from euclid import ex_euclid
 class ZModBase:
     base = None
     val = None
+    def __str__(self):
+        return str(self.val)
+
     def __init__(self, val):
         self.val = val % self.base
 
@@ -51,14 +54,19 @@ class ZModBase:
 
 
 
+_memoized = {}
 
 def ZMod(base):
-    name = 'ZMod{}'.format(base)
-    bases = (ZModBase,)
-    dct = {'base': base}
-    return type(name, bases, dct)
+    """
+    Class constructor, returning the following class for
+    e.g. base = 3:
+    class ZMod3(ZModBase):
+        base = 3
+    """
+    if base not in _memoized:
+        name = 'ZMod{}'.format(base)
+        bases = (ZModBase,)
+        dct = {'base': base}
+        _memoized[base] = type(name, bases, dct)
 
-
-
-
-
+    return _memoized[base]
