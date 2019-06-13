@@ -1,3 +1,7 @@
+"""
+Module for various Euclidean algorithms
+"""
+
 def ex_euclid(a, b):
     """
     The extended Euclidean algorithm yields the
@@ -20,4 +24,3 @@ def ex_euclid(a, b):
         current_t, last_t = new_t, current_t
 
     return last_remainder, last_s, last_t
-
