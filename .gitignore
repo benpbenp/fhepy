@@ -3,4 +3,5 @@
 *.swn
 __pycache__.
 *.pyc
+.hypothesis/
 

@@ -2,6 +2,7 @@ atomicwrites==1.2.1
 attrs==18.2.0
 backcall==0.1.0
 decorator==4.3.2
+hypothesis==4.24.3
 ipdb==0.11
 ipython==7.2.0
 ipython-genutils==0.2.0
