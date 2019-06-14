@@ -8,7 +8,7 @@ from zmodp import ZMod
     (0, 2, 2),
     (1, 1, 2),
     (1, 0, 1),
-    (1, 2, 0), 
+    (1, 2, 0),
     (2, 0, 2),
     (2, 1, 0),
     (2, 2, 1),
@@ -72,5 +72,4 @@ def test_zmod3_zero_division(a):
     A = ZMod(3)(a)
     B = ZMod(3)(0)
     with pytest.raises(ZeroDivisionError):
-        A / B
-
+        A / B  # pylint: disable=W0104

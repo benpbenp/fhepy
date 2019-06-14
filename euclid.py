@@ -2,6 +2,7 @@
 Module for various Euclidean algorithms
 """
 
+
 def ex_euclid(a, b):
     """
     The extended Euclidean algorithm yields the

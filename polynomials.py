@@ -3,7 +3,7 @@ from itertools import zip_longest
 
 
 class PolynomialBase:
-    field = None
+    field = int
 
     def __init__(self, coefficients):
         """
@@ -41,7 +41,7 @@ class PolynomialBase:
             coefficients.append(coefficient)
             last_degree = degree
         return cls(coefficients)
-    
+
     def terms(self):
         for i, coef in enumerate(self.coefficients):
             if coef != 0:
@@ -56,8 +56,7 @@ class PolynomialBase:
     def degree(self):
         if self == 0:
             return -1
-        else:
-            return len(self.coefficients) - 1
+        return len(self.coefficients) - 1
 
     def __str__(self):
         terms = deque([])
@@ -86,7 +85,7 @@ class PolynomialBase:
     def __add__(self, other):
         return self.__class__([
             a + b
-            for a, b 
+            for a, b
             in zip_longest(
                 self.coefficients, other.coefficients, fillvalue=self.field(0)
             )
@@ -95,7 +94,7 @@ class PolynomialBase:
     def __sub__(self, other):
         return self.__class__([
             a - b
-            for a, b 
+            for a, b
             in zip_longest(
                 self.coefficients, other.coefficients, fillvalue=self.field(0)
             )
@@ -107,7 +106,8 @@ class PolynomialBase:
             for other_term in other.terms():
                 product_coef = term.lc() * other_term.lc()
                 product_degree = term.degree() + other_term.degree()
-                product_term = self.__class__([0]*product_degree + [product_coef])
+                product_term = self.__class__(
+                    [0]*product_degree + [product_coef])
                 product = product + product_term
         return product
 
@@ -120,7 +120,7 @@ class PolynomialBase:
         return True
 
     def divmod(self, other):
-        q = self.__class__([0]) 
+        q = self.__class__([0])
         r = self
         d = other.degree()
         c = other.lc()
@@ -141,6 +141,3 @@ def Polynomials(field):
         dct = {'field': field}
         _memoized[field] = type(name, bases, dct)
     return _memoized[field]
-
-    
-

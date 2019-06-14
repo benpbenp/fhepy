@@ -43,21 +43,21 @@ def test_multiplication_single_term(coef_a, coef_b, coef_prod, degree):
     coef_a = [0] * degree + coef_a
     coef_b = [0] * degree + coef_b
     coef_prod = [0] * degree * 2 + coef_prod
-    assert P(coef_a) * P(coef_b) == P(coef_prod) 
+    assert P(coef_a) * P(coef_b) == P(coef_prod)
 
 
 def test_multiplication_example_1():
     """
     (1 + x)*(1+x) = 1 + x**2
     """
-    assert P([1, 1]) * P([1,1]) == P([1, 0, 1])
+    assert P([1, 1]) * P([1, 1]) == P([1, 0, 1])
 
 
 def test_multiplication_example_2():
     """
     (1 + x)*x = x + x**2
     """
-    assert P([1, 1]) * P([0,1]) == P([0, 1, 1])
+    assert P([1, 1]) * P([0, 1]) == P([0, 1, 1])
 
 
 @given(coef_a=st.lists(st.integers(), min_size=1), coef_b=st.lists(st.integers(), min_size=1))
@@ -86,5 +86,5 @@ def test_multiplication_inverse_of_division_zmod7(coef_a, coef_b):
 def test_polynomial_modulus(coef_a):
     a = P7(coef_a)
     poly_mod = P7.build_terms({16: 1, 0: 1})
-    q, r = a.divmod(poly_mod)
+    _, r = a.divmod(poly_mod)
     assert r.degree() < 16, r

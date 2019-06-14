@@ -53,5 +53,4 @@ def test_zmod2_zero_division(a):
     A = ZMod(2)(a)
     B = ZMod(2)(0)
     with pytest.raises(ZeroDivisionError):
-        A / B
-
+        A / B  # pylint: disable=W0104

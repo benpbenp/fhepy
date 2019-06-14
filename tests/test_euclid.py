@@ -1,4 +1,3 @@
-import pytest
 from euclid import ex_euclid
 
 

@@ -1,8 +1,10 @@
 from euclid import ex_euclid
 
+
 class ZModBase:
     base = None
     val = None
+
     def __str__(self):
         return str(self.val)
 
@@ -29,10 +31,9 @@ class ZModBase:
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self.val == other.val
-        elif isinstance(other, int):
+        if isinstance(other, int):
             return self == self.__class__(other)
-        else:
-            return super().__eq__(other)
+        return super().__eq__(other)
 
     def inverse(self):
         """
@@ -49,12 +50,12 @@ class ZModBase:
         if self == 0:
             raise ZeroDivisionError
 
-        gcd, s, t = ex_euclid(self.val, self.base)
+        _, s, _ = ex_euclid(self.val, self.base)
         return self.__class__(s)
 
 
-
 _memoized = {}
+
 
 def ZMod(base):
     """
