@@ -3,3 +3,6 @@ lint:
 
 test:
 	py.test
+
+fix:
+	autopep8 --in-place -r . && isort -rc .

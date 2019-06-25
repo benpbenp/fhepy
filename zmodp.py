@@ -1,7 +1,21 @@
+"""
+Module supporting modular arithmetic over the integers.
+
+For instance, for arithmetic mod 7, instantiate the integers mod 7 with:
+
+from zmodp import ZMod
+Z7 = ZMod(7)
+assert Z7(3) + Z7(4) == 0
+"""
 from euclid import ex_euclid
 
 
 class ZModBase:
+    """
+    Base class for the integers mod some value.
+
+    Used by the class builder function ZMod below.
+    """
     base = None
     val = None
 
@@ -18,7 +32,16 @@ class ZModBase:
         return self.__class__(self.val - other.val)
 
     def __mul__(self, other):
-        return self.__class__(self.val * other.val)
+        if isinstance(other, ZModBase):
+            val = self.val * other.val
+        else:
+            val = self.val * other
+        return self.__class__(val)
+
+    def __rmul__(self, other):
+        if isinstance(other, int):
+            return self.__class__(other * self.val)
+        raise NotImplementedError
 
     def __truediv__(self, other):
         """
@@ -26,7 +49,11 @@ class ZModBase:
         """
         if other == 0:
             raise ZeroDivisionError
-        return self * other.inverse()
+        if isinstance(other, ZModBase):
+            inverse = other.inverse()
+        else:
+            inverse = self.__class__(other).inverse()
+        return self * inverse
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):

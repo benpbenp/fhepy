@@ -1,8 +1,16 @@
+"""
+Module supporting arithetic on polynomials with coefficients
+drawn from a finite field
+(only tested with subclasses of zmodp.ZModBase as the field).
+"""
 from collections import deque
 from itertools import zip_longest
 
 
 class PolynomialBase:
+    """
+    Base class for Polynomial classes.
+    """
     field = int
 
     def __init__(self, coefficients):
@@ -110,6 +118,11 @@ class PolynomialBase:
                     [0]*product_degree + [product_coef])
                 product = product + product_term
         return product
+
+    def __rmul__(self, other):
+        if isinstance(other, int):
+            return self.__class__([other * coef for coef in self.coefficients])
+        raise NotImplementedError
 
     def __eq__(self, other):
         if isinstance(other, int):

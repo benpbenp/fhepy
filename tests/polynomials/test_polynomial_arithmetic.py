@@ -1,10 +1,11 @@
 from itertools import zip_longest
-from hypothesis import given, assume
+
 import hypothesis.strategies as st
 import pytest
-from zmodp import ZMod
+from hypothesis import assume, given
 
 from polynomials import Polynomials
+from zmodp import ZMod
 
 ZMod2 = ZMod(2)
 ZMod7 = ZMod(7)
@@ -30,6 +31,15 @@ def test_addition(coef_a, coef_b):
         for a, b
         in zip_longest(coef_a, coef_b, fillvalue=0)
     ])
+
+
+@pytest.mark.parametrize('coef_a,expected', [
+    ([], [0]),
+    ([1], [6]),
+    ([2, 3, 4], [5, 4, 3])
+])
+def test_additive_inversion_zmod7(coef_a, expected):
+    assert -1 * P7(coef_a) == P7(expected)
 
 
 @pytest.mark.parametrize('degree', range(0, 5))

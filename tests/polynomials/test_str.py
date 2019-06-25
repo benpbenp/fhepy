@@ -1,4 +1,5 @@
 import pytest
+
 from polynomials import Polynomials
 from zmodp import ZMod
 

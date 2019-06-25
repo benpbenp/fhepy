@@ -1,5 +1,5 @@
-from zmodp import ZMod
 from polynomials import Polynomials
+from zmodp import ZMod
 
 ZMod7 = ZMod(7)
 P7 = Polynomials(ZMod7)

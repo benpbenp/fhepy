@@ -1,4 +1,5 @@
 import pytest
+
 from zmodp import ZMod
 
 
