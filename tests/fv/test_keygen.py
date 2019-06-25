@@ -9,7 +9,7 @@ from fhepy.zmodp import ZMod
 def small_fv_scheme():
     return FVScheme(
         plaintext_coefficient_modulus=7,
-        ciphertext_coefficient_modulus=7,
+        ciphertext_coefficient_modulus=874,
         polynomial_modulus_degree=16,
     )
 
