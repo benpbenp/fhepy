@@ -1,4 +1,4 @@
-from euclid import ex_euclid
+from fhepy.euclid import ex_euclid
 
 
 def test_ex_euclid():

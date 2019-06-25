@@ -1,8 +1,8 @@
 import pytest
 
-from fv import FVScheme
-from polynomials import Polynomials
-from zmodp import ZMod
+from fhepy.fv import FVScheme
+from fhepy.polynomials import Polynomials
+from fhepy.zmodp import ZMod
 
 
 @pytest.fixture

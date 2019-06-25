@@ -1,6 +1,6 @@
 import pytest
 
-from zmodp import ZMod
+from fhepy.zmodp import ZMod
 
 
 @pytest.mark.parametrize('a,b,expected', [

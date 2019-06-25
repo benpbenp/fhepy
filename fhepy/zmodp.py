@@ -7,7 +7,7 @@ from zmodp import ZMod
 Z7 = ZMod(7)
 assert Z7(3) + Z7(4) == 0
 """
-from euclid import ex_euclid
+from fhepy.euclid import ex_euclid
 
 
 class ZModBase:

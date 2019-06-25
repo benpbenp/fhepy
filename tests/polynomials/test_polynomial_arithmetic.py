@@ -4,8 +4,8 @@ import hypothesis.strategies as st
 import pytest
 from hypothesis import assume, given
 
-from polynomials import Polynomials
-from zmodp import ZMod
+from fhepy.polynomials import Polynomials
+from fhepy.zmodp import ZMod
 
 ZMod2 = ZMod(2)
 ZMod7 = ZMod(7)
