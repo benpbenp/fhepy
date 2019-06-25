@@ -14,6 +14,13 @@ in a fully Pythonic manner, in order to promote these concepts as widely as poss
 
 This package is in the very early stages of development.
 
+For further background information see http://homomorphicencryption.org/introduction/ and https://en.wikipedia.org/wiki/Homomorphic_encryption.
+
+Another project with very similar goals albeit in Haskell, is https://github.com/cpeikert/Lol.
+
+The arithmetical base classes in the zmodp and polynomials modules are heavily inspired by a series of blog posts and accompanying code released by Jeremy Kun, starting with https://jeremykun.com/2014/03/13/programming-with-finite-fields/.
+
+
 ### Functionality
 
 #### Modular integer arithmetic
@@ -71,6 +78,7 @@ The two elements of the returned tuple are the quotient, 3x + 5, and the remaind
 #### The Fan-Vercauteren Encryption Scheme
 
 This scheme is under development, and is implemented in the module fhepy.fv.
+See the original paper (https://eprint.iacr.org/2012/144) and this blog post (https://blog.n1analytics.com/homomorphic-encryption-illustrated-primer/) for more information.
 
 To use the scheme, the fv.FVScheme class must first be instantiated with parameters to set which
 polynomial ring we will be operating under.
